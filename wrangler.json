@@ -1,0 +1,12 @@
+{
+  "name": "avyra-telegram-bot",
+  "main": "src/entry.py",
+  "compatibility_date": "2026-04-05",
+  "compatibility_flags": [
+    "python_workers"
+  ],
+  "vars": {
+    "GAME_SHORT_NAME": "avyra",
+    "GAME_URL": "https://avyra.bismaya.xyz"
+  }
+}
