@@ -1280,6 +1280,7 @@ class Game {
 
         for (let i = 1; i < 5; i++) {
             const x = startX + i * spacing + Utils.randomRange(-30, 30);
+            const y = Utils.randomRange(this.height * 0.15, this.height * 0.85);
             this.gravityWells.push(new GravityWell(x, y));
         }
     }
