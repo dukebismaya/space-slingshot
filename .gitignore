@@ -2,3 +2,27 @@ node_modules/
 .dev.vars
 .wrangler/
 dist/
+# Cloudflare Wrangler
+.wrangler/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Temporary reference directories
+python-workers-examples/
+.wrangler/
+python-workers-examples/
+node_modules/
+__pycache__/
+*.py[cod]
+.env
+.env.local

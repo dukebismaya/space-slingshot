@@ -1267,18 +1267,19 @@ class Game {
     }
     
     spawnInitialGravityWells() {
-        const spacing = this.width * 0.5;
-        
-        // First gravity well closer and easier to reach
+        const isMobile = window.innerWidth <= 768;
+        const startX = isMobile ? this.width * 0.8 : this.width * 0.45;
+        const spacing = isMobile ? this.width * 0.8 : this.width * 0.5;
+
+        // First gravity well closer and easier to reach (give mobile players more reaction time)
         this.gravityWells.push(new GravityWell(
-            this.width * 0.45,
+            startX,
             this.height * 0.5,
             50
         ));
-        
+
         for (let i = 1; i < 5; i++) {
-            const x = this.width * 0.45 + i * spacing + Utils.randomRange(-30, 30);
-            const y = Utils.randomRange(this.height * 0.25, this.height * 0.75);
+            const x = startX + i * spacing + Utils.randomRange(-30, 30);
             this.gravityWells.push(new GravityWell(x, y));
         }
     }

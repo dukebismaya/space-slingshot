@@ -493,3 +493,51 @@ button:hover, button:active {
         bottom: calc(30px + env(safe-area-inset-bottom));
     }
 }
+
+/* Mobile responsiveness for Modal */
+@media (max-width: 600px) {
+    .modal {
+        padding: 10px;
+    }
+    
+    .modal-content {
+        padding: 15px 20px;
+        max-width: 95vw;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+    
+    .modal-content h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    #close-modal {
+        top: 5px;
+        right: 10px;
+        font-size: 24px;
+    }
+    
+    .control-item {
+        margin-bottom: 6px;
+    }
+    
+    .control-item .key {
+        padding: 4px 10px;
+        font-size: 11px;
+        min-width: 50px;
+    }
+    
+    .control-item span {
+        font-size: 13px;
+    }
+    
+    .feature-item h4 {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+    
+    .feature-item p {
+        font-size: 12px;
+    }
+}

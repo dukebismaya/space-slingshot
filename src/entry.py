@@ -1,14 +1,11 @@
-from js import Response, fetch, Headers
+from workers import WorkerEntrypoint, Response
+from js import fetch
 import json
 
-class WorkerEntrypoint:
-    def __init__(self, ctx, env):
-        self.ctx = ctx
-        self.env = env
-
+class Default(WorkerEntrypoint):
     async def fetch(self, request):
         if request.method != "POST":
-            return Response.new("Method Not Allowed", status=405)
+            return Response("Method Not Allowed", status=405)
 
         try:
             # Parse the incoming JSON request from Telegram Webhook
@@ -20,23 +17,26 @@ class WorkerEntrypoint:
             elif "callback_query" in update:
                 await self.handle_callback_query(update["callback_query"])
 
-            return Response.new("OK", status=200)
+            return Response("OK", status=200)
 
         except Exception as e:
             print(f"Error processing webhook: {e}")
-            return Response.new("Internal Server Error", status=500)
+            return Response("Internal Server Error", status=500)
 
     async def send_telegram_request(self, method, payload):
         """Helper to send JSON payloads to the Telegram Bot API."""
         bot_token = self.env.BOT_TOKEN
         url = f"https://api.telegram.org/bot{bot_token}/{method}"
         
-        headers = Headers.new({"content-type": "application/json"})
-        options = {
+        from pyodide.ffi import to_js
+        
+        options = to_js({
             "method": "POST",
-            "headers": headers,
+            "headers": {
+                "content-type": "application/json"
+            },
             "body": json.dumps(payload)
-        }
+        })
         
         return await fetch(url, options)
 
@@ -63,6 +63,3 @@ class WorkerEntrypoint:
             "url": self.env.GAME_URL
         }
         await self.send_telegram_request("answerCallbackQuery", payload)
-
-# Python Workers exporting default class
-export = WorkerEntrypoint

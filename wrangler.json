@@ -1,6 +1,8 @@
 {
   "name": "avyra-telegram-bot",
   "main": "src/entry.py",
+  "workers_dev": true,
+  "preview_urls": false,
   "compatibility_date": "2026-04-05",
   "compatibility_flags": [
     "python_workers"
