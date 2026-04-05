@@ -1,0 +1,99 @@
+<!-- Copyright (C) 2026 Bismaya, All Rights Reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Avyra - Space Slingshot | Bismaya</title>
+    
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    
+    <div id="ui-overlay">
+        <div id="score">0</div>
+        <div id="high-score">BEST: 0</div>
+        <div id="shield-indicator" class="hidden">🛡️</div>
+        <button id="info-btn" aria-label="How to play">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+            </svg>
+        </button>
+    </div>
+    
+    <div id="help-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="close-modal" aria-label="Close">&times;</button>
+            <h3>HOW TO PLAY</h3>
+            <div class="control-section">
+                <div class="control-item">
+                    <span class="key">HOLD</span>
+                    <span class="desc">Touch / Click / Space</span>
+                </div>
+                <p class="control-explain">Tether to nearest black hole and orbit (slow-mo active)</p>
+            </div>
+            <div class="control-section">
+                <div class="control-item">
+                    <span class="key">RELEASE</span>
+                    <span class="desc">Let go / Release Space</span>
+                </div>
+                <p class="control-explain">Slingshot forward in current direction</p>
+            </div>
+            <div class="control-section">
+                <div class="control-item">
+                    <span class="key">STEER</span>
+                    <span class="desc">Arrows / Swipe</span>
+                </div>
+                <p class="control-explain">Left/Right steer, Up/Down thrust/brake after releasing</p>
+            </div>
+            <div class="features">
+                <h4>ASSIST FEATURES</h4>
+                <ul>
+                    <li><span class="feature-icon">🛡️</span> <strong>Shield</strong> - Saves you once per run</li>
+                    <li><span class="feature-icon">🎯</span> <strong>Trajectory</strong> - Shows predicted path</li>
+                    <li><span class="feature-icon">🧲</span> <strong>Gravity Assist</strong> - Gentle pull to wells</li>
+                    <li><span class="feature-icon">⏳</span> <strong>Slow-Mo</strong> - Time slows while holding</li>
+                </ul>
+            </div>
+            <div class="tips">
+                <h4>TIPS</h4>
+                <ul>
+                    <li>Watch the trajectory preview dots</li>
+                    <li>Orbit longer to build up speed</li>
+                    <li>Use slow-mo to time your release</li>
+                    <li>Shield shows as 🛡️ in the indicator</li>
+                </ul>
+            </div>
+            <p class="modal-credits">A Game By <span class="author">Bismaya</span></p>
+        </div>
+    </div>
+    
+    <div id="start-screen" class="screen">
+        <h1>AVYRA</h1>
+        <p class="subtitle">Singularity Slingshot</p>
+        <p class="instructions">
+            <span class="hold">HOLD</span> (Touch / Click / Space) to orbit<br>
+            <span class="release">RELEASE</span> to slingshot forward
+        </p>
+        <button id="start-btn">TAP TO START</button>
+        <p class="credits">A Game By <span class="author">Bismaya</span></p>
+    </div>
+    
+    <div id="game-over-screen" class="screen hidden">
+        <h2>SINGULARITY</h2>
+        <p class="final-score">DISTANCE: <span id="final-distance">0</span></p>
+        <p class="best-score">BEST: <span id="best-distance">0</span></p>
+        <button id="restart-btn">TRY AGAIN</button>
+    </div>
+    
+    <div id="hold-indicator">HOLD TO ORBIT</div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
