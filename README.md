@@ -20,6 +20,16 @@ git clone https://github.com/dukebismaya/space-slingshot.git
 
 ---
 
+## 🕹️ Play on Telegram
+
+You don't even need to download the game to play it! Avyra: Singularity is natively integrated into Telegram.
+
+1. Open Telegram and search for the bot: **[@bismaya_avyra_bot](https://t.me/bismaya_avyra_bot)**.
+2. Start a conversation or use the inline query (`@bismaya_avyra_bot`).
+3. Tap **Play** to enter the Singularity instantly.
+
+---
+
 ## 🎮 What to Know
 
 - **Players:** Launch, play, survive the Singularity.  
